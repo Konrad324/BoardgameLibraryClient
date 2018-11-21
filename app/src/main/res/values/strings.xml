@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BoardgameLibraryClient</string>
+    <string name="title_home">Start</string>
+    <string name="title_dashboard">Gry</string>
+    <string name="title_notifications">Konto</string>
+</resources>
