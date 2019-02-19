@@ -1,5 +1,6 @@
 package com.konradmikolaj.boardgamelibraryclient
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_notifications -> {
                 message.setText(R.string.title_notifications)
+                val intent = ConfigurationActivity.newIntent(this, "dupa")
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
         }
