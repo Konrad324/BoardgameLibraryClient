@@ -7,9 +7,6 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import kotlinx.android.synthetic.main.account.*
 
-
-
-
 class AccountActivity : Activity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

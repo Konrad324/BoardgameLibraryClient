@@ -5,27 +5,31 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 import kotlinx.android.synthetic.main.boardgame_list_item.view.*
 
-class BoardgameAdapter(val items : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class BoardgameAdapter(val items : ArrayList<BoardGame>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
-    // Gets the number of animals in the list
     override fun getItemCount(): Int {
         return items.size
     }
 
     // Inflates the item views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.boardgame_list_item, parent, false))
+        val view = LayoutInflater.from(context).inflate(R.layout.boardgame_list_item, parent, false)
+        return ViewHolder(view)
     }
 
-    // Binds each animal in the ArrayList to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvAnimalType?.text = items.get(position)
+        holder.title?.text = items.get(position).title
+        holder.itemView.setOnClickListener { u ->
+            val detailActivity = GameDetailActivity.newIntent(u.context, items.get(position))
+            u.context.startActivity(detailActivity)
+        }
     }
+
 }
 
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    // Holds the TextView that will add each animal to
-    val tvAnimalType = view.listBoardgameTitle
+    val title = view.listBoardgameTitle
 }

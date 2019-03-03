@@ -6,12 +6,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.LinearLayoutManager
+import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 import kotlinx.android.synthetic.main.boardgames.*
 
 
 class BoardgamesActivity : Activity() {
 
-    private val boardgames: ArrayList<String> = ArrayList()
+    private val boardgames: ArrayList<BoardGame> = ArrayList()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -49,12 +50,12 @@ class BoardgamesActivity : Activity() {
     }
 
     fun addSampleBoardgames(){
-        boardgames.add("Osadnicy z Catanu")
-        boardgames.add("Przykladowa Gra")
-        boardgames.add("Magia i Miecz")
-        boardgames.add("Splendor")
-        boardgames.add("Talisman")
-        boardgames.add("Domek")
-        boardgames.add("Napad bandziorów na krzak pomidorów")
+        boardgames.add(BoardGame.of("Osadnicy z Catanu", "Osadnicy z Catanu (Settlers of Catan) to bardzo popularna na całym świecie gra rodzinno-ekonomiczna o bardzo dużej \"miodności\" grania. Teraz prezentujemy jej polską edycję!","Półka"))
+        boardgames.add(BoardGame.of("Przykladowa Gra", "opis1","Półka"))
+        boardgames.add(BoardGame.of("Magia i Miecz", "opis1","Półka"))
+        boardgames.add(BoardGame.of("Splendor", "opis1","Półka"))
+        boardgames.add(BoardGame.of("Talisman", "opis1","Półka"))
+        boardgames.add(BoardGame.of("Domek", "opis1","Półka"))
+        boardgames.add(BoardGame.of("Napad bandziorów na krzak pomidorów", "opis1","Półka"))
     }
 }

@@ -13,4 +13,14 @@
     <string name="password">Password</string>
     <string name="accountCheckCreate">Check / Create</string>
     <string name="addNewGame">Dodaj nową grę</string>
+    <string name="gameDetail_heading">Gra</string>
+    <string name="gameDetail_titleLabel">Tytuł</string>
+    <string name="gameDetail_titleHint">wpisz tytuł</string>
+    <string name="gameDetail_descriptionLabel">Opis</string>
+    <string name="gameDetail_descriptionHint">wpisz opis</string>
+    <string name="gameDetail_localizationLabel">Lokalizacja</string>
+    <string name="gameDetail_localizationHint">gdzie jest gra?</string>
+    <string name="gameDetail_buttonSve">ZAPISZ</string>
+    <string name="gameDetail_buttonDelete">USUŃ GRĘ</string>
+    <string name="gameDetail_deleteCheckbox">Chce usunąć grę</string>
 </resources>

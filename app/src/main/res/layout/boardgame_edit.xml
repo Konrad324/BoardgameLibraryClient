@@ -1,15 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textGameDetailHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DetailEdit"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="323dp" />
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/gameDetail_heading"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Gra" />
+
+    <TextView
+        android:id="@+id/textGameDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="107dp"
+        android:text="@string/gameDetail_titleLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editGameDetailTitle"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:ems="10"
+        android:hint="@string/gameDetail_titleHint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textGameDetailTitle" />
+
+    <TextView
+        android:id="@+id/textGameDetailDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:text="@string/gameDetail_descriptionLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGameDetailTitle" />
+
+    <EditText
+        android:id="@+id/editGameDetailDescription"
+        android:layout_width="277dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="67dp"
+        android:ems="10"
+        android:hint="@string/gameDetail_descriptionHint"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textGameDetailDescription" />
+
+    <TextView
+        android:id="@+id/textGameDetailLocalization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/gameDetail_localizationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGameDetailDescription" />
+
+    <EditText
+        android:id="@+id/editGameDetailLocalization"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:ems="10"
+        android:hint="@string/gameDetail_localizationHint"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textGameDetailLocalization" />
+
+    <Button
+        android:id="@+id/buttonSaveGame"
+        android:layout_width="104dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/gameDetail_buttonSve"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGameDetailLocalization" />
+
+    <Button
+        android:id="@+id/buttonDeleteGame"
+        android:layout_width="97dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="112dp"
+        android:text="@string/gameDetail_buttonDelete"
+        app:layout_constraintStart_toEndOf="@+id/buttonSaveGame"
+        app:layout_constraintTop_toBottomOf="@+id/editGameDetailLocalization" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDeleteGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/gameDetail_deleteCheckbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDeleteGame" />
 </android.support.constraint.ConstraintLayout>
