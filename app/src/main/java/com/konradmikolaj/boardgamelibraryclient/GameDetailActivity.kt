@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 
@@ -15,12 +17,19 @@ class GameDetailActivity : Activity() {
 
         val boardgame = intent.getSerializableExtra(INTENT_BOARDGAME) as BoardGame
         setBoardgameDataOnView(boardgame)
+        setRemoveButtonBehaviour()
     }
 
     fun setBoardgameDataOnView(boardGame: BoardGame){
         findViewById<EditText>(R.id.editGameDetailTitle).setText(boardGame.title)
         findViewById<EditText>(R.id.editGameDetailDescription).setText(boardGame.description)
         findViewById<EditText>(R.id.editGameDetailLocalization).setText(boardGame.localization)
+    }
+
+    fun setRemoveButtonBehaviour() {
+        findViewById<CheckBox>(R.id.checkBoxDeleteGame).setOnCheckedChangeListener { buttonView, isChecked ->
+            findViewById<Button>(R.id.buttonDeleteGame).isEnabled = isChecked
+        }
     }
 
     companion object {

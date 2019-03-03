@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Button
 import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 import kotlinx.android.synthetic.main.boardgames.*
 
@@ -41,6 +42,10 @@ class BoardgamesActivity : Activity() {
         addSampleBoardgames()
         boardgamesList.layoutManager = LinearLayoutManager(this)
         boardgamesList.adapter = BoardgameAdapter(boardgames, this)
+
+        findViewById<Button>(R.id.buttonAddNewGame).setOnClickListener { view ->
+            startActivity(GameDetailActivity.newIntent(this, BoardGame.empty()))
+        }
     }
 
     companion object {

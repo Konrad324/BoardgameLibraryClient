@@ -96,6 +96,7 @@
         android:layout_height="61dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="112dp"
+        android:enabled="false"
         android:text="@string/gameDetail_buttonDelete"
         app:layout_constraintStart_toEndOf="@+id/buttonSaveGame"
         app:layout_constraintTop_toBottomOf="@+id/editGameDetailLocalization" />
