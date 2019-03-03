@@ -18,14 +18,34 @@
         app:menu="@menu/navigation" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textBoardgameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="355dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="16dp"
         android:text="@string/title_dashboard"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/title_dashboard" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/addNewGame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBoardgameTitle" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/boardgamesList"
+        android:layout_width="363dp"
+        android:layout_height="511dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 </android.support.constraint.ConstraintLayout>
