@@ -1,21 +1,22 @@
 package com.konradmikolaj.boardgamelibraryclient
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.boardgames.*
 
-class MainActivity : AppCompatActivity() {
+
+class BoardgamesActivity : Activity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
+                startActivity(MainActivity.newIntent(this))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_boardgames -> {
-                startActivity(BoardgamesActivity.newIntent(this))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_account -> {
@@ -29,13 +30,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.boardgames)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.selectedItemId = R.id.navigation_boardgames
     }
 
     companion object {
         fun newIntent(context: Context): Intent {
-            return Intent(context, MainActivity::class.java)
+            return Intent(context, BoardgamesActivity::class.java)
         }
     }
 }
