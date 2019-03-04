@@ -5,9 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.account.*
 
 class AccountActivity : Activity() {
+
+    private val databaseConnector: DatabaseConnector = DatabaseConnector(this)
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -34,6 +38,10 @@ class AccountActivity : Activity() {
 
         val userId = intent.getStringExtra(INTENT_USER_ID)
                 ?: throw IllegalStateException("field $INTENT_USER_ID missing in Intent")
+
+        findViewById<Button>(R.id.buttonCheckCreateAccount).setOnClickListener { view ->
+            databaseConnector.getAllUsers()
+        }
     }
 
     companion object {
