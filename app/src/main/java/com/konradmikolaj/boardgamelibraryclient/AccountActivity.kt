@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.widget.Button
-import android.widget.Toast
+import android.widget.EditText
 import kotlinx.android.synthetic.main.account.*
 
 class AccountActivity : Activity() {
@@ -36,22 +36,31 @@ class AccountActivity : Activity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_account
 
-        val userId = intent.getStringExtra(INTENT_USER_ID)
-                ?: throw IllegalStateException("field $INTENT_USER_ID missing in Intent")
+        findViewById<EditText>(R.id.editPassword).setText(databaseConnector.getPassValue())
+        findViewById<EditText>(R.id.editLogin).setText(databaseConnector.getLoginValue())
 
         findViewById<Button>(R.id.buttonCheckCreateAccount).setOnClickListener { view ->
-            databaseConnector.getAllUsers()
+            handleButtonClick()
         }
+    }
+
+    fun handleButtonClick() {
+        val login = findViewById<EditText>(R.id.editLogin).text.toString()
+        val pass = findViewById<EditText>(R.id.editPassword).text.toString()
+
+        val sharedPref = this?.getSharedPreferences("boardgameApp", Context.MODE_PRIVATE) ?: return
+        val edit = sharedPref.edit()
+            edit.putString("LOGIN", login)
+            edit.putString("PASS", pass)
+            edit.apply()
+
+        databaseConnector.handleUser()
     }
 
     companion object {
 
-        private val INTENT_USER_ID = "user_id"
-
-        fun newIntent(context: Context, value: String): Intent {
-            val intent = Intent(context, AccountActivity::class.java)
-            intent.putExtra(INTENT_USER_ID, value)
-            return intent
+        fun newIntent(context: Context): Intent {
+            return Intent(context, AccountActivity::class.java)
         }
     }
 }

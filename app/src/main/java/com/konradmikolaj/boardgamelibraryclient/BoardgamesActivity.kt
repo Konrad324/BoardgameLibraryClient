@@ -15,6 +15,8 @@ class BoardgamesActivity : Activity() {
 
     private val boardgames: ArrayList<BoardGame> = ArrayList()
 
+    private val databaseConnector: DatabaseConnector = DatabaseConnector(this)
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
@@ -25,7 +27,7 @@ class BoardgamesActivity : Activity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_account -> {
-                val intent = AccountActivity.newIntent(this, "dupa")
+                val intent = AccountActivity.newIntent(this)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
@@ -39,13 +41,16 @@ class BoardgamesActivity : Activity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_boardgames
 
-        addSampleBoardgames()
-        boardgamesList.layoutManager = LinearLayoutManager(this)
-        boardgamesList.adapter = BoardgameAdapter(boardgames, this)
+        databaseConnector.fetchGames(this)
 
         findViewById<Button>(R.id.buttonAddNewGame).setOnClickListener { view ->
             startActivity(GameDetailActivity.newIntent(this, BoardGame.empty()))
         }
+    }
+
+    fun refreshBoardgames(boardgames: ArrayList<BoardGame>) {
+        boardgamesList.layoutManager = LinearLayoutManager(this)
+        boardgamesList.adapter = BoardgameAdapter(boardgames, this)
     }
 
     companion object {

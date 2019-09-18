@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_account -> {
-                val intent = AccountActivity.newIntent(this, "dupa")
-                startActivity(intent)
+                startActivity(AccountActivity.newIntent(this))
                 return@OnNavigationItemSelectedListener true
             }
         }
