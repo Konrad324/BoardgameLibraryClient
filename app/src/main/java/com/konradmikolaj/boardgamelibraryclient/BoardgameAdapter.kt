@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 import kotlinx.android.synthetic.main.boardgame_list_item.view.*
 
-class BoardgameAdapter(val items : ArrayList<BoardGame>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class BoardgameAdapter(val items : List<BoardGame>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size

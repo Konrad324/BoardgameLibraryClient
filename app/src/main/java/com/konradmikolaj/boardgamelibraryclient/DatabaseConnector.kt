@@ -37,7 +37,7 @@ class DatabaseConnector(private val activity: Activity) {
             val checkConnection = URL("$SERVER_DOMAIN$CHECK_PERMISSION?login=$login&pass=$pass").openConnection() as HttpURLConnection
             if (checkConnection.responseCode == 200) {
                 uiThread {
-                    activity.longToast("OK, user data correct.")
+                    activity.longToast("OK, dane użytkownika poprawne.")
                 }
             } else {
                 val createConnection = URL("$SERVER_DOMAIN$CREATE_USER?login=$login&pass=$pass").openConnection() as HttpURLConnection
@@ -45,11 +45,11 @@ class DatabaseConnector(private val activity: Activity) {
                 createConnection.connect()
                 if (createConnection.responseCode == 200) {
                     uiThread {
-                        activity.longToast("New user created!")
+                        activity.longToast("Nowy użytkownik utworzony!")
                     }
                 } else {
                     uiThread {
-                        activity.longToast("Wrong password/user already exist.")
+                        activity.longToast("Złe hasło/użytkownik już istnieje.")
                     }
                 }
             }
@@ -69,11 +69,11 @@ class DatabaseConnector(private val activity: Activity) {
             connection.connect()
             if (connection.responseCode == 200) {
                 uiThread {
-                    activity.longToast("Game saved.")
+                    activity.longToast("Gra zapisana.")
                 }
             } else {
                 uiThread {
-                    activity.longToast("Cannot save game, response code ${connection.responseCode}")
+                    activity.longToast("Nie można zapisać gry, kod błędu ${connection.responseCode}")
                 }
             }
         }
@@ -92,11 +92,11 @@ class DatabaseConnector(private val activity: Activity) {
             connection.connect()
             if (connection.responseCode == 200) {
                 uiThread {
-                    activity.longToast("Game updated.")
+                    activity.longToast("Gra zaktualizowana.")
                 }
             } else {
                 uiThread {
-                    activity.longToast("Cannot update game, response code ${connection.responseCode}")
+                    activity.longToast("Nie można zaktualizować gry, kod błędu ${connection.responseCode}")
                 }
             }
         }
@@ -115,11 +115,11 @@ class DatabaseConnector(private val activity: Activity) {
             connection.connect()
             if (connection.responseCode == 200) {
                 uiThread {
-                    activity.longToast("Game removed.")
+                    activity.longToast("Gra usunięta.")
                 }
             } else {
                 uiThread {
-                    activity.longToast("Cannot remove game, response code ${connection.responseCode}")
+                    activity.longToast("Nie można usunąć gry, kod błędu ${connection.responseCode}")
                 }
             }
         }
@@ -135,11 +135,36 @@ class DatabaseConnector(private val activity: Activity) {
             connection.connect()
             if (connection.responseCode != 200) {
                 uiThread {
-                    activity.toast("Games loaded.")
+                    activity.toast("Gry wczytane.")
                 }
             }
             val listType = object : TypeToken<ArrayList<BoardGame>>() { }.type
             val boardgames = Gson().fromJson<ArrayList<BoardGame>>(readBody(connection), listType)
+                    .sortedBy { it.title }
+
+            uiThread {
+                boardgamesActivity.refreshBoardgames(boardgames)
+            }
+        }
+    }
+
+    fun fetchGames(boardgamesActivity: BoardgamesActivity, keyword: String) {
+        val login = getLoginValue()
+        val pass = getPassValue()
+
+        doAsync {
+            val connection = URL("$SERVER_DOMAIN$GET_USER_GAMES?login=$login&pass=$pass").openConnection() as HttpURLConnection
+            connection.setRequestProperty("Content-Type","application/json")
+            connection.connect()
+            if (connection.responseCode != 200) {
+                uiThread {
+                    activity.toast("Gry wczytane.")
+                }
+            }
+            val listType = object : TypeToken<ArrayList<BoardGame>>() { }.type
+            val boardgames = Gson().fromJson<ArrayList<BoardGame>>(readBody(connection), listType)
+                    .filter { it.title.contains(keyword) }
+                    .sortedBy { it.title }
 
             uiThread {
                 boardgamesActivity.refreshBoardgames(boardgames)

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Button
+import android.widget.EditText
 import com.konradmikolaj.boardgamelibraryclient.model.BoardGame
 import kotlinx.android.synthetic.main.boardgames.*
 
@@ -46,9 +47,14 @@ class BoardgamesActivity : Activity() {
         findViewById<Button>(R.id.buttonAddNewGame).setOnClickListener { view ->
             startActivity(GameDetailActivity.newIntent(this, BoardGame.empty()))
         }
+
+        findViewById<Button>(R.id.buttonFilter).setOnClickListener { view ->
+            val keyword = findViewById<EditText>(R.id.editTextFilter).text.toString()
+            databaseConnector.fetchGames(this, keyword)
+        }
     }
 
-    fun refreshBoardgames(boardgames: ArrayList<BoardGame>) {
+    fun refreshBoardgames(boardgames: List<BoardGame>) {
         boardgamesList.layoutManager = LinearLayoutManager(this)
         boardgamesList.adapter = BoardgameAdapter(boardgames, this)
     }
