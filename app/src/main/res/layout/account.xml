@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context=".AccountActivity">
 
     <android.support.design.widget.BottomNavigationView
@@ -18,10 +19,12 @@
         app:menu="@menu/navigation" />
 
     <TextView
+        android:textColor="#FFF"
         android:id="@+id/textAccountHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
+        android:layout_marginStart="140dp"
+        android:autoSizeTextType="uniform"
         android:layout_marginTop="96dp"
         android:text="@string/title_notifications"
         android:textSize="36sp"
@@ -30,10 +33,11 @@
         tools:text="@string/title_notifications" />
 
     <EditText
+        android:textColor="#FFF"
         android:id="@+id/editLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="70dp"
         android:ems="10"
         android:hint="@string/login"
@@ -42,10 +46,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textAccountHeader" />
 
     <EditText
+        android:textColor="#FFF"
         android:id="@+id/editPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/password"
@@ -57,7 +62,7 @@
         android:id="@+id/buttonCheckCreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="138dp"
+        android:layout_marginStart="110dp"
         android:layout_marginTop="65dp"
         android:text="@string/accountCheckCreate"
         app:layout_constraintStart_toStartOf="parent"

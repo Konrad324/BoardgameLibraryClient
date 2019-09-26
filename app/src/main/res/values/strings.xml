@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">BoardgameLibraryClient</string>
-    <string name="title_home">Start</string>
+    <string name="app_name">Biblioteka gier planszowych</string>
+    <string name="title_home">Autorzy</string>
     <string name="title_dashboard">Gry</string>
     <string name="title_notifications">Konto</string>
     <string name="cdv">Collegium Da Vinci</string>
@@ -8,15 +8,15 @@
     <string name="author_1">Konrad Robaszyński</string>
     <string name="author_2">Mikołaj Muszyński</string>
     <string name="descriptionHeader">Opis:</string>
-    <string name="description">BoardGameManager jest programem, który ma pomóc w zarządzaniu domową biblioteczką gier planszowych</string>
+    <string name="description">Jest to program, który ma pomóc w zarządzaniu domową biblioteczką gier planszowych</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
-    <string name="accountCheckCreate">Check / Create</string>
+    <string name="accountCheckCreate">Zaloguj/Stwórz</string>
     <string name="addNewGame">Dodaj nową grę</string>
     <string name="gameDetail_heading">Gra</string>
     <string name="gameDetail_titleLabel">Tytuł</string>
     <string name="gameDetail_titleHint">wpisz tytuł</string>
-    <string name="gameDetail_descriptionLabel">Opis</string>
+    <string name="gameDetail_descriptionLabel">Opis i recenzja</string>
     <string name="gameDetail_descriptionHint">wpisz opis</string>
     <string name="gameDetail_localizationLabel">Lokalizacja</string>
     <string name="gameDetail_localizationHint">gdzie jest gra?</string>

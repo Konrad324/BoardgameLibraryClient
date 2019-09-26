@@ -5,10 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    android:textColor="#FFF"
     tools:context=".BoardgamesActivity">
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
+        android:textColor="#FFF"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
@@ -17,34 +20,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
 
-    <TextView
-        android:id="@+id/textBoardgameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/title_dashboard"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/title_dashboard" />
-
     <Button
         android:id="@+id/buttonAddNewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="140dp"
         android:text="@string/addNewGame"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBoardgameTitle" />
+        tools:layout_editor_absoluteY="60dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/boardgamesList"
         android:layout_width="363dp"
         android:layout_height="511dp"
+
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
+        android:textColor="#FFF"
+        android:theme="@style/CardView.Dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddNewGame" />
 
